@@ -24,7 +24,9 @@ class CreateTransactionService {
 
     const validBalance = transactionRepository.getBalance();
 
-    console.log(`${(await validBalance).outcome} - ${value}`);
+    console.log(
+      `Credito: ${(await validBalance).outcome} - Type: ${type} > R$ ${value}`,
+    );
 
     if (type === 'outcome' && (await validBalance).income <= value) {
       throw new AppError(
